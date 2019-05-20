@@ -18,14 +18,9 @@ class Profile {
   String email;
   String tel;
   String company;
-  String facebookUrl;
-  String linkedlnUrl;
-  String twitterUrl;
-  String instagramUrl;
 
   Profile({this.id, this.firstname, this.lastname, this.position, this.email,
-      this.tel, this.company, this.facebookUrl, this.linkedlnUrl,
-      this.twitterUrl, this.instagramUrl});
+      this.tel, this.company});
 
   factory Profile.fromMap(Map<String, dynamic> json) => new Profile(
     id: json["id"],
@@ -34,23 +29,16 @@ class Profile {
     position: json["position"],
     email: json["email"],
     tel: json["tel"],
-    company: json["company"],
-    facebookUrl: json["facebookUrl"],
-    linkedlnUrl: json["linkedlnUrl"],
-    twitterUrl: json["twitterUrl"],
-    instagramUrl: json["instagramUrl"],
+    company: json["company"]
   );
 
   Map<String, dynamic> toMap() => {
     "id": id,
     "firstname": firstname,
+    "lastname": lastname,
     "position": position,
     "email": email,
     "tel": tel,
-    "company": company,
-    "facebookUrl": facebookUrl,
-    "linkedlnUrl": linkedlnUrl,
-    "twitterUrl": twitterUrl,
-    "instagramUrl": instagramUrl
+    "company": company
   };
 }

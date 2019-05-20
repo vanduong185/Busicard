@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
 
-import 'package:bussiness_card/src/index.dart';
+import 'package:sns_connect/src/index.dart';
 
 Future<Null> main() async{
   SystemChrome.setSystemUIOverlayStyle(new SystemUiOverlayStyle(

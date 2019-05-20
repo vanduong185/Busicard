@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:bussiness_card/src/screens/profile/create/personal_info_form.dart';
+import 'package:sns_connect/src/screens/profile/create/personal_info_form.dart';
 
 class CreateProfile extends StatefulWidget {
   @override

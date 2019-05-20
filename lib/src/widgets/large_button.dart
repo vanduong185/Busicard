@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 
 class LargeButton extends StatefulWidget {
   final String text;
-  final Function onTap;
+  final GestureTapCallback onTap;
 
   LargeButton({Key key, this.text, this.onTap}) : super(key: key) ;
 

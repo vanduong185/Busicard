@@ -2,10 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:bussiness_card/src/widgets/splash.dart';
-import 'package:bussiness_card/src/screens/profile/create/create_profile.dart';
-import 'package:bussiness_card/src/db/DBProvider.dart';
-import 'package:bussiness_card/src/db/models/profile.dart';
+import 'package:sns_connect/src/widgets/splash.dart';
+import 'package:sns_connect/src/screens/profile/create/create_profile.dart';
+import 'package:sns_connect/src/screens/home/home.dart';
+import 'package:sns_connect/src/db/DBProvider.dart';
+import 'package:sns_connect/src/db/models/profile.dart';
 
 class Index extends StatefulWidget {
   @override
@@ -35,7 +36,12 @@ class _IndexState extends State<Index> {
         );
       }
       else {
-
+        Profile p = profile;
+        print(p.toMap());
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => Home())
+        );
       }
     });
   }

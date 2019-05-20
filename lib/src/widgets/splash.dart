@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:bussiness_card/src/widgets/background.dart';
+import 'package:sns_connect/src/widgets/background.dart';
 
 class Splash extends StatefulWidget {
   @override

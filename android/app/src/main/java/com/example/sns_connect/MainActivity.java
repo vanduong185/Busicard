@@ -1,4 +1,4 @@
-package io.teneocto.bussiness_card;
+package com.example.sns_connect;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

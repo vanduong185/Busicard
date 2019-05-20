@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:bussiness_card/src/screens/profile/create/social_info.dart';
-import 'package:bussiness_card/src/widgets/large_button.dart';
+import 'package:sns_connect/src/screens/profile/create/social_info.dart';
+import 'package:sns_connect/src/widgets/large_button.dart';
+
+import 'package:sns_connect/src/db/models/profile.dart';
+import 'package:sns_connect/src/db/DBProvider.dart';
 
 class PersonalInfoForm extends StatefulWidget {
   @override
@@ -9,6 +12,14 @@ class PersonalInfoForm extends StatefulWidget {
 }
 
 class _PersonalInfoFormState extends State<PersonalInfoForm> {
+  Profile profile;
+
+  @override
+  void initState() {
+    super.initState();
+    profile = new Profile();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -40,6 +51,11 @@ class _PersonalInfoFormState extends State<PersonalInfoForm> {
                                     hintText: "First Name",
                                     hintStyle: TextStyle(color: Color(0xFFBFBFBF), fontSize: 14)
                                 ),
+                                onChanged: (text) {
+                                  setState(() {
+                                    profile.firstname = text;
+                                  });
+                                },
                               ),
                             ),
                           ),
@@ -54,6 +70,11 @@ class _PersonalInfoFormState extends State<PersonalInfoForm> {
                                     hintText: "Last Name",
                                     hintStyle: TextStyle(color: Color(0xFFBFBFBF), fontSize: 14)
                                 ),
+                                onChanged: (text) {
+                                  setState(() {
+                                    profile.lastname = text;
+                                  });
+                                }
                               ),
                             ),
                           ),
@@ -75,6 +96,11 @@ class _PersonalInfoFormState extends State<PersonalInfoForm> {
                           hintText: "Position",
                           hintStyle: TextStyle(color: Color(0xFFBFBFBF), fontSize: 14)
                       ),
+                      onChanged: (text) {
+                        setState(() {
+                          profile.position = text;
+                        });
+                      }
                     ),
                   ),
                 ),
@@ -92,6 +118,11 @@ class _PersonalInfoFormState extends State<PersonalInfoForm> {
                           hintText: "Email",
                           hintStyle: TextStyle(color: Color(0xFFBFBFBF), fontSize: 14)
                       ),
+                      onChanged: (text) {
+                        setState(() {
+                          profile.email = text;
+                        });
+                      },
                     ),
                   ),
                 ),
@@ -109,6 +140,11 @@ class _PersonalInfoFormState extends State<PersonalInfoForm> {
                           hintText: "Tel",
                           hintStyle: TextStyle(color: Color(0xFFBFBFBF), fontSize: 14)
                       ),
+                      onChanged: (text) {
+                        setState(() {
+                          profile.tel = text;
+                        });
+                      },
                     ),
                   ),
                 ),
@@ -123,6 +159,11 @@ class _PersonalInfoFormState extends State<PersonalInfoForm> {
                           hintText: "Company",
                           hintStyle: TextStyle(color: Color(0xFFBFBFBF), fontSize: 14)
                       ),
+                      onChanged: (text) {
+                        setState(() {
+                          profile.company = text;
+                        });
+                      },
                     ),
                   ),
                 )
@@ -134,10 +175,25 @@ class _PersonalInfoFormState extends State<PersonalInfoForm> {
           child: LargeButton(
             text: 'Next',
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SocialInfo())
-              );
+
+//              if(profile.firstname != null && profile.lastname != null) {
+//                if (profile.firstname.length > 0 && profile.lastname.length > 0) {
+//                  print(profile.toMap());
+//                  Navigator.push(
+//                      context,
+//                      MaterialPageRoute(builder: (context) => SocialInfo(profile))
+//                  );
+//                }
+//              }
+              DBProvider.db.newProfile(profile).then((result) {
+                print(result);
+                if (result == 1) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SocialInfo(profile))
+                  );
+                }
+              });
             },
           ),
         )
